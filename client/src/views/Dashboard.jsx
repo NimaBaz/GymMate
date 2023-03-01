@@ -2,6 +2,7 @@ import axios from 'axios';
 import TopNav from '../components/TopNav';
 import TinderCard from "react-tinder-card"
 import React, { useEffect, useState } from "react";
+import SwipeButtons from '../components/SwipeButtons';
 
 const Dashboard = () => {
 
@@ -25,7 +26,18 @@ const Dashboard = () => {
 
     ]);
 
-    
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/allUsers`)
+            .then(response => {
+                console.log("This is our GET request: ", response)
+                setCards(response.data.results)
+            })
+            .catch((err) => {
+                console.log("This is our catch error: ", err)
+            })
+            console.log("This is called Asynchronous code")
+        
+    }, [])
 
     return (
         <div className="main">
@@ -40,18 +52,18 @@ const Dashboard = () => {
             <div className='buddy-card-container'>
                 {
                     cards.map((person, idx) => 
-                        <TinderCard className='swipe' key={idx} preventSwipe={['up', 'down']}>
+                        <TinderCard className='swipe' key={idx} preventSwipe={['up', 'down']} >
+
                             <div style={ {backgroundImage: `url(${person.url})`} } className='cards'>
                                 <h3>{person.name}</h3>
                             </div>
+
                         </TinderCard>
                     )
+
                 }
+                <SwipeButtons/>
             </div>
-
-
-            {/* Chat Screen */}
-            {/* Individual chat screen */}
 
         </div>
     );

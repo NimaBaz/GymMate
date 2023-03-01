@@ -1,7 +1,8 @@
 import './App.css';
+import Chats from './components/Chats'
 import Login_Reg from './views/Login_Reg'
 import Dashboard from './views/Dashboard';
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -9,10 +10,10 @@ function App() {
     <div className="main">
 
       <Routes>
-        <Route path='/' element={ <Login_Reg/> }></Route>
-        <Route path='/dashboard' element={<Dashboard/>}></Route>
+        <Route path='/' element={ <Login_Reg /> }></Route>
+        <Route path='/dashboard' element={<Dashboard />}></Route>
         <Route path='/profile'></Route>
-        <Route path='/chat'></Route>
+        <Route path='/chat' element={ <Chats />}></Route>
         <Route path='/likes'></Route>
         <Route path='/discovery'></Route>
       </Routes>

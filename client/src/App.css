@@ -1,13 +1,3 @@
-/* Global */
-
-* {
-  margin: 0 auto;
-}
-
-
-/* Global */
-
-
 /* Main */
 
 .main {
@@ -21,11 +11,13 @@
 /* Dashboard */
 
 .dash-logo {
+  margin: 0 auto;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 /* Dashboard */
+
 
 /* Login/Reg */
 
@@ -94,30 +86,28 @@
 /* Login/Reg */
 
 
-/* TopNav */
+/* Top Nav */
 
 .gym-logo {
   height: 40px;
   object-fit: contain;
 }
 
-.nav-bar {
+.header {
   display: flex;
   align-items: center;
-  justify-content:right;
+  justify-content: space-between;
   border-bottom: 1px solid #f9f9f9;
+}
+
+.header-icon {
   padding: 20px;
 }
 
-.nav-icon {
-  margin-left: 80px;
-  margin-right: 80px;
-}
-
-/* TopNav */
+/* Top Nav */
 
 
-/* BuddyCards */
+/* Buddy Cards */
 
 .cards {
   --bs-card-spacer-y: 1rem;
@@ -158,13 +148,142 @@
 .buddy-card-container {
   display: flex;
   justify-content: center;
-  margin-top: 5vh;
+  margin-top: 3vh;
 }
 
 .swipe {
   position: absolute;
-  
 }
 
-/* BuddyCards */
+/* Buddy Cards */
+
+
+/* Swipe Buttons */
+
+.swipeButtons {
+  position: fixed;
+  bottom: 5vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.swipeButtons .MuiIconButton-root {
+  background-color: white;
+  box-shadow: 0 10px 53px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+.swipeButtons-repeat {
+  padding: 3vw !important;
+  color: #f5b748 !important;
+}
+
+.swipeButtons-left {
+  padding: 3vw !important;
+  color: #ec5e6f !important;
+}
+
+.swipeButtons-star {
+  padding: 3vw !important;
+  color: #62b4f9 !important;
+}
+
+.swipeButtons-right {
+  padding: 3vw !important;
+  color: #76e2b3 !important;
+}
+
+.swipeButtons-lightning {
+  padding: 3vw !important;
+  color: #915dd1 !important;
+}
+
+/* Swipe Buttons */
+
+
+/* Chats */
+
+.chat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  height: 70px;
+  border-bottom: 1px solid #fafafa;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.chat-image {
+  margin-right: 20px;
+}
+
+.chat-details {
+  flex: 1;
+}
+
+.chat-details > p {
+  color: gray;
+}
+
+.chat-timestamp {
+  color: lightgray;
+}
+
+.chatScreen-message {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.chatScreen-textUser {
+  margin-left: auto;
+  background-color: #29b3cd;
+  padding: 15px;
+  border-radius: 20px;
+  color: white;
+}
+
+.chatScreen-timestamp {
+  text-align: center;
+  padding: 20px;
+  color: gray;
+}
+
+.chatScreen-text {
+  margin-left: 10px;
+  background-color: lightgray;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.chatScreen-inputButton {
+  border: none;
+  margin-right: 20px;
+  background-color: white;
+  font-weight: bolder;
+  color: #fe3d71;
+}
+
+.chatScreen-inputField {
+  flex: 1;
+  padding: 10px;
+  border: none;
+}
+
+.chatScreen-input {
+  display: flex;
+  padding: 5px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid lightgray;
+}
+
+/* Chats */
 

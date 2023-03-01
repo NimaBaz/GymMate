@@ -43,7 +43,7 @@ UserSchema.pre('validate', function(next) {
     console.log(this.get('confirmPassword'))
 
     if (this.password !== this.get('confirmPassword')) {
-        this.invalidate('confirmPassword', 'Password must match confirm password')
+        this.invalidate('confirmPassword', 'Password must match to confirm password')
     }
     next()
 })
