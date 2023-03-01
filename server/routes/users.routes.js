@@ -1,31 +1,37 @@
 const UserController = require('../controllers/users.controllers')
+const {authenticate} = require('../config/jwt.config')
 
 module.exports = (app) => {
 
     /*
     ! CREATE
     */
-    app.post("/api/users/new", UserController.addUser)
-
-    /*
-    ! READ ALL
-    */
-    app.get("/api/users", UserController.showAllUsers)
+    app.post(`/api/register`, UserController.register)
 
     /*
     ! READ ONE
     */
-    app.get("/api/users/:id", UserController.showUser)
-
-
-    /*
-    ! UPDATE
-    */
-    app.put("/api/users/update/:id", UserController.updateUser)
+    app.get(`/api/login`, UserController.login)
+    app.get(`/api/logout`, UserController.logout)
+    app.get(`/api/cookie`, UserController.cookie)
+    app.get(`/api/getUser`, UserController.getUser)
 
     /*
-    ! DELETE
+    ! READ ALL
     */
-    app.delete("/api/users/delete/:id", UserController.deleteUser)
+    app.get(`/api/allUsers`, authenticate, UserController.index)
+
+
+
+
+    // /*
+    // ! UPDATE
+    // */
+    // app.put("/api/users/update/:id", UserController.updateUser)
+
+    // /*
+    // ! DELETE
+    // */
+    // app.delete("/api/users/delete/:id", UserController.deleteUser)
 
 }

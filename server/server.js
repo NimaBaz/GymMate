@@ -7,6 +7,7 @@
 
 //import express and store express in a variable
 const express = require("express")
+const cookies = require("cookie-parser");
 const cors = require('cors');
 
 //initialize the express application and store it in a variable called 'app'
@@ -17,12 +18,16 @@ const port = 8000
 
 //allow the application to parse json data (form information)
 //allow the application to accept form information
-app.use(cors());
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+app.use(cookies());
 
 //import mongoose
 require('./config/mongoose.config')
+
+//import dotenv
+require('dotenv').config();
 
 //imort our routes
 const Routes = require('./routes/users.routes')
