@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
 
 const UserSchema = new mongoose.Schema({
     firstName: {
@@ -28,9 +29,10 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
         type: String,
+        unique: false,
         required: [true, "Password required"],
         minlength: [10, "Password line must be at least 10 characters long"],
-        maxlength: [255, "Password can only be 255 characters long"],
+        maxlength: [255, "Password can only be 255 characters long"]
     }
 }, {timestamps: true})
 

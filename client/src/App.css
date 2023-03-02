@@ -1,19 +1,43 @@
-/* Main */
+/* Global */
 
 .main {
   text-align: center;
+  color: black;
 }
 
 .main-logo {
   padding: 20px;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* Global */
+
 /* Dashboard */
 
-.dash-logo {
+.logo-header {
   margin: 0 auto;
   display: flex;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding: 50px;
+}
+
+.logout-button {
+  border: none;
+  background-color: white;
+  box-shadow: 0 18px 53px 0 rgba(0, 0, 0, 0.3);
+  font-weight: bolder;
+  color: #fe3d71;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 90px;
+  height: 5vh;
 }
 
 /* Dashboard */
@@ -21,67 +45,16 @@
 
 /* Login/Reg */
 
-.login {
-  width: 800px;
-  margin: auto;
-  margin-top: 10%;
+.log-reg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.registration {
-  width: 700px;
-  margin: auto;
-  margin-top: 2%;
-}
 
-.rounded-t-5 {
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-}
-
-.card cascading-right {
-  background: hsla(0, 0%, 100%, 0.55);
-  backdrop-filter: blur(30px);
-}
-
-.cascading-right {
-  margin-right: -50px;
-}
-
-@media(min-width:992px) {
-  .rounded-tr-lg-0 {
-    border-top-right-radius: 0;
-  }
-  .rounded-bl-lg-5 {
-    border-bottom-left-radius: 0.5rem;
-  }
-}
-
-@media(max-width: 991.98px) {
-  .cascading-right {
-    margin-right: 0;
-  }
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 /* Login/Reg */
 
@@ -89,19 +62,21 @@
 /* Top Nav */
 
 .gym-logo {
-  height: 40px;
+  height: 60px;
   object-fit: contain;
+  border-radius: 30px;
 }
 
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #f9f9f9;
+  justify-content: space-evenly !important;
 }
 
 .header-icon {
-  padding: 20px;
+  background-color: #fe3d71 !important;
+  color: black !important;
+  border-radius: 30px;
 }
 
 /* Top Nav */
@@ -125,7 +100,7 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
-  width: 600px;
+  width: 500px;
   max-width: 85vw;
   min-width: 0;
   height: 50vh;
@@ -142,13 +117,13 @@
 .cards > h3 {
   position: absolute;
   bottom: 10px;
-  color: white;
+  color: black;
 }
 
 .buddy-card-container {
   display: flex;
   justify-content: center;
-  margin-top: 3vh;
+  margin-top: 6vh;
 }
 
 .swipe {
@@ -175,27 +150,27 @@
 }
 
 .swipeButtons-repeat {
-  padding: 3vw !important;
+  padding: 2vw !important;
   color: #f5b748 !important;
 }
 
 .swipeButtons-left {
-  padding: 3vw !important;
+  padding: 2vw !important;
   color: #ec5e6f !important;
 }
 
 .swipeButtons-star {
-  padding: 3vw !important;
+  padding: 2vw !important;
   color: #62b4f9 !important;
 }
 
 .swipeButtons-right {
-  padding: 3vw !important;
+  padding: 2vw !important;
   color: #76e2b3 !important;
 }
 
 .swipeButtons-lightning {
-  padding: 3vw !important;
+  padding: 2vw !important;
   color: #915dd1 !important;
 }
 
@@ -210,17 +185,38 @@
   justify-content: space-between;
   padding: 20px;
   height: 70px;
-  border-bottom: 1px solid #fafafa;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center !important;
+  width: 90%;
+  margin-left: 70px;
+  margin-top: 20px;
+}
+
+.new-match {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 30px;
+  margin-left: 30px;
+  font-size: x-large;
+}
+
+.messages {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  margin-left: 40px;
+  font-size: x-large;
 }
 
 .chat-image {
-  margin-right: 20px;
+  margin-left: 40px;
+  cursor: pointer;
 }
 
 .chat-details {
@@ -257,7 +253,7 @@ a {
 
 .chatScreen-text {
   margin-left: 10px;
-  background-color: lightgray;
+  background-color: grey;
   padding: 15px;
   border-radius: 20px;
 }
@@ -282,7 +278,7 @@ a {
   position: fixed;
   bottom: 0;
   width: 100%;
-  border-top: 1px solid lightgray;
+  border-top: 1px solid grey;
 }
 
 /* Chats */

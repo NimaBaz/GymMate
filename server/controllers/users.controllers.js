@@ -8,8 +8,9 @@ const jwt = require("jsonwebtoken")
 module.exports.register = (req, res)=>{
     User.create(req.body)
         .then(user => {
+            console.log("Made it to the controller", req.body)
             const userToken = jwt.sign({id: user._id}, process.env.FIRST_SECRET_KEY);
-            res.cookie("usertoken", userToken, {httpOnly: true}).json({msg: "success", user:user});
+            res.cookie("usertoken", userToken, process.env.FIRST_SECRET_KEY, {httpOnly: true}).json({msg: "success", user:user});
         })
         .catch(err => {
             console.log("in err")
@@ -40,12 +41,12 @@ module.exports.login = async(req, res) => {
         return res.sendStatus(400);
     }
     const userToken = jwt.sign({id: user._id}, process.env.FIRST_SECRET_KEY);
-    res.cookie("usertoken", userToken,  process.env.FIRST_SECRET_KEY, {httpOnly: true}).json({ msg: "success!", user });  
+    res.cookie("usertoken", userToken,  process.env.FIRST_SECRET_KEY, {httpOnly: true}).json({ msg: "success!", user });
 }
 
 module.exports.logout = (req, res) => {
-    res.clearCookie('usertoken')
-    res.sendStatus(200)
+    res.clearCookie('usertoken');
+    res.sendStatus(200);
 }
 
 module.exports.getUser = (req, res) => {
@@ -56,9 +57,7 @@ module.exports.getUser = (req, res) => {
 }
 
 module.exports.cookie =(req, res) => {
-    res
-        .cookie("testkey","testvalue", {httpOnly:true})
-        .json("success")
+    res.cookie("testkey","testvalue", {httpOnly:true}).json("success")
 }
 
 

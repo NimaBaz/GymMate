@@ -1,36 +1,26 @@
 import axios from 'axios';
-import TopNav from '../components/TopNav';
+import TopNav from '../components/nav/TopNav';
 import TinderCard from "react-tinder-card"
+import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
-import SwipeButtons from '../components/SwipeButtons';
+import SwipeButtons from '../components/buttons/SwipeButtons';
 
 const Dashboard = () => {
 
+    const navigate = useNavigate();
+    const [users, setUsers] = useState(null);
     const [cards, setCards] = useState([
         {
-            name: 'Nima',
-            url: 'http://cdn.shopify.com/s/files/1/1633/7705/articles/arnold_split_600x.jpg?v=1636274756'
-        },
-        {
-            name: 'Ruben',
-            url: ''
-        },
-        {
-            name: 'Colby',
-            url: ''
-        },
-        {
-            name: 'Miguel',
-            url: ''
+            firstName:""
         }
-
     ]);
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/allUsers`)
+        axios.get(`http://localhost:8000/api/allUsers`, { withCredentials: true })
             .then(response => {
                 console.log("This is our GET request: ", response)
-                setCards(response.data.results)
+                setCards(response.data)
+                setUsers(response.data)
             })
             .catch((err) => {
                 console.log("This is our catch error: ", err)
@@ -39,10 +29,20 @@ const Dashboard = () => {
         
     }, [])
 
+    const logoutHandler = () => {
+        axios.get(`http://localhost:8000/api/logout`)
+            .then(res => navigate("/"))
+            .catch()
+    }
+
     return (
         <div className="main">
 
-            <h1 className='dash-logo'>GymMate</h1>
+            <div className='logo-header'>
+                <h1 className='dash-logo'>GymMate</h1>
+
+                <button onClick={logoutHandler} className='logout-button'>Logout</button>
+            </div>
 
             {/* Header */}
             <TopNav/>
@@ -51,11 +51,11 @@ const Dashboard = () => {
             {/* Buttons below buddy cards */}
             <div className='buddy-card-container'>
                 {
-                    cards.map((person, idx) => 
+                    cards&&users&&users.map((user, idx) => 
                         <TinderCard className='swipe' key={idx} preventSwipe={['up', 'down']} >
 
-                            <div style={ {backgroundImage: `url(${person.url})`} } className='cards'>
-                                <h3>{person.name}</h3>
+                            <div style={ {backgroundImage: `url(${user.url})`} } className='cards'>
+                                <h3>{user.firstName}</h3>
                             </div>
 
                         </TinderCard>

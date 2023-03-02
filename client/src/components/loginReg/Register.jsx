@@ -67,7 +67,7 @@ const Register = () => {
                     <label>Confirm Password</label>
                     <input type="password" name="confirmPassword" value={user.confirmPassword} onChange={changeHandler} />
                 </div>
-                <button className="btn btn-outline-dark"> Register </button>
+                <button className='logout-button'> Sign Up </button>
             </form>
         </div>
     )

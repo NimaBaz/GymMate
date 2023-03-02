@@ -1,12 +1,16 @@
 import React from "react";
-import { Link, useNavigate} from "react-router-dom";
 import { IconButton } from '@material-ui/core';
+import TuneIcon from '@material-ui/icons/Tune';
 import ForumIcon from '@material-ui/icons/Forum';
+import GradeIcon from '@material-ui/icons/Grade';
 import PersonIcon from '@material-ui/icons/Person';
+import { Link, useNavigate} from "react-router-dom";
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 
 const TopNav = ({ backButton }) => {
     const navigate = useNavigate();
+
+    let image = require("./babafitt.jpg");
 
     return (
         <div className="header">
@@ -18,16 +22,29 @@ const TopNav = ({ backButton }) => {
                 </IconButton>
             ) :
             (
-                <IconButton>
-                    <PersonIcon className='header-icon' fontSize='large' />
-                </IconButton>
+                <Link to={`/profile`}>
+                    <IconButton>
+                        <PersonIcon className='header-icon' fontSize='large' />
+                    </IconButton>
+                </Link>
             )}
 
-            
+            <Link to={`/discovery`}>
+                <IconButton>
+                    <TuneIcon className='header-icon' fontSize='large' />
+                </IconButton>
+            </Link>
+
             <Link to={`/dashboard`}>
                 <img 
                 className='gym-logo'
-                src="http://a1216.phobos.apple.com/us/r30/Purple4/v4/cd/36/a5/cd36a5ee-ff43-1321-6f0a-fd85d6a5160c/mzl.cdxrgikj.png" alt="GymMate Logo" />
+                src={image} alt="GymMate Logo" />
+            </Link>
+
+            <Link to={`/likes`}>
+                <IconButton>
+                    <GradeIcon className='header-icon' fontSize='large' />
+                </IconButton>
             </Link>
             
             <Link to={`/chat`}>

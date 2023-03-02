@@ -1,4 +1,4 @@
-import TopNav from './TopNav';
+import TopNav from '../nav/TopNav';
 import React, { useState } from "react";
 import { Avatar } from "@material-ui/core";
 
@@ -15,7 +15,7 @@ const ChatScreen = () => {
     return (
         <div className="chatScreen">
 
-            <h1 className='dash-logo'>GymMate</h1>
+            <h1 className='logo-header'>GymMate</h1>
 
             {/* Header */}
             <TopNav backButton='/chat'/>

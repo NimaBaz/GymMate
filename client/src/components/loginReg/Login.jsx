@@ -23,7 +23,7 @@ const Login = () => {
     const submitHandler = (e) =>{
         e.preventDefault()
         axios.post(`http://localhost:8000/api/login`, user)
-            .then(res=>{
+            .then(res => {
                 console.log(res)
                 navigate("/dashboard")
             })
@@ -62,7 +62,7 @@ const Login = () => {
                                         <Link to={"/register"}>Don't have an account?</Link>
                                     </div>
                                 </div>
-                                <button value="Login" type="submit" className="btn btn-primary btn-block mb-4">Sign in</button>
+                                <button value="Login" type="submit" className='logout-button'>Sign In</button>
                             </form>
                         </div>
                     </div>
@@ -74,3 +74,10 @@ const Login = () => {
 }
 
 export default Login
+
+
+// {login ? (
+//     <p className="text-success">You Are Logged in Successfully</p>
+// ) : (
+//     <p className="text-danger">You Are Not Logged in</p>
+// )}
