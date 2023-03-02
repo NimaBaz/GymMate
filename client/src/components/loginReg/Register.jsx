@@ -48,7 +48,7 @@ const Register = () => {
             {errors.map((err, index) => <p key={index} className="tabs">{err}</p>)}
             <form onSubmit={submitHandler}>
                 <div className="form-group row">
-                    <label className="col-sm-2 col-form-label">First Name</label>
+                    <label>First Name</label>
                     <input type="text" name="firstName" value={user.firstName} onChange={changeHandler} />
                 </div>
                 <div className="form-group row">

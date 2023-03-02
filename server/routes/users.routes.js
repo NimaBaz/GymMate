@@ -12,26 +12,22 @@ module.exports = (app) => {
     /*
     ! READ ONE
     */
-    app.get(`/api/cookie`, UserController.cookie)
-    app.get(`/api/getUser`, UserController.getUser)
+    app.get(`/api/logout`, UserController.logout)
+    app.get(`/api/user`, UserController.getUser)
 
     /*
     ! READ ALL
    */
-    app.get(`/api/logout`, UserController.logout)
-    app.get(`/api/allUsers`, authenticate, UserController.index)
+    app.get(`/api/users`, authenticate, UserController.getAllUsers)
 
+    /*
+    ! UPDATE
+    */
+    app.put("/api/users/update/:id", UserController.updateUser)
 
-
-
-    // /*
-    // ! UPDATE
-    // */
-    // app.put("/api/users/update/:id", UserController.updateUser)
-
-    // /*
-    // ! DELETE
-    // */
-    // app.delete("/api/users/delete/:id", UserController.deleteUser)
+    /*
+    ! DELETE
+    */
+    app.delete("/api/users/delete/:id", UserController.deleteUser)
 
 }

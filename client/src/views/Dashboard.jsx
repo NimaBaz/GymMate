@@ -16,7 +16,7 @@ const Dashboard = () => {
     ]);
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/allUsers`, { withCredentials: true })
+        axios.get(`http://localhost:8000/api/users`, { withCredentials: true })
             .then(response => {
                 console.log("This is our GET request: ", response)
                 setCards(response.data)

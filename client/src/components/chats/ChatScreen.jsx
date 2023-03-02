@@ -1,15 +1,25 @@
+import io from 'socket.io-client';
 import TopNav from '../nav/TopNav';
-import React, { useState } from "react";
 import { Avatar } from "@material-ui/core";
+import React, { useState, useEffect } from 'react';
 
 const ChatScreen = () => {
-    const [input, setInput] = useState("");
-    const [messages, setMessages] = useState([]);
+
+    const [input, setInput] = useState("")
+    const [messages, setMessages] = useState([])
+
+    const [socket] = useState(() => io(":8000"));
+
+    useEffect(() => {
+        console.log("Is this running?");
+        socket.on("post chat", (msg) => {setMessages(prevMsgState => [...prevMsgState, msg])});
+        return () => socket.removeAllListeners();
+    }, [socket]);
 
     const Submit = (e) => {
         e.preventDefault();
-        setMessages([...messages, {message: input}])
-        setInput("");
+        socket.emit([...messages, { content: input }])
+        setInput("")
     }
 
     return (
@@ -21,16 +31,21 @@ const ChatScreen = () => {
             <TopNav backButton='/chat'/>
 
             {/* Individual chat screen */}
-            <p className='chatScreen-timestamp'></p>
-
-            {/* msg.name ? (line 22 and 23 msg.message) : (make another div className='chatScreen-message' with a p tag className='chatScreen-textUser' for the msg.message)*/}
-
             {
                 messages.map((msg, idx) =>
+
+                    msg.content ? (
                     <div key={idx} className='chatScreen-message'>
                         <Avatar className='chatScreen-image'/>
-                        <p className='chatScreen-text'></p>
+                        <p className='chatScreen-text'>{msg.content}</p>
                     </div>
+                    ) :
+
+                    (
+                    <div className='chatScreen-message'>
+                        <p className='chatScreen-textUser'>{msg.content}</p>
+                    </div>
+                    )
                 )
             }
 

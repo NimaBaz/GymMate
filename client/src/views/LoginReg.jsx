@@ -2,7 +2,7 @@ import React from "react";
 import Login from '../components/loginReg/Login'
 import Register from '../components/loginReg/Register'
 
-const Login_Reg = () => {
+const LoginReg = () => {
 
     return (
         <div className="log-reg">
@@ -16,4 +16,4 @@ const Login_Reg = () => {
     );
 };
 
-export default Login_Reg;
+export default LoginReg;

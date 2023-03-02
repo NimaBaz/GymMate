@@ -18,10 +18,10 @@ const port = 8000
 
 //allow the application to parse json data (form information)
 //allow the application to accept form information
+app.use(cookies());
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-app.use(cookies());
 
 //import mongoose
 require('./config/mongoose.config')
