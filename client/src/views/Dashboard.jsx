@@ -5,8 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import SwipeButtons from '../components/buttons/SwipeButtons';
 
-const Dashboard = () => {
+const Dashboard = (props) => {
 
+    console.log("Dashboard Props", props);
+    
+    const {loggedInUser} = props
     const navigate = useNavigate();
     const [users, setUsers] = useState(null);
     const [cards, setCards] = useState([
@@ -21,13 +24,14 @@ const Dashboard = () => {
                 console.log("This is our GET request: ", response)
                 setCards(response.data)
                 setUsers(response.data)
+                props.setLoggedInUser(response.data.user);
             })
             .catch((err) => {
                 console.log("This is our catch error: ", err)
             })
             console.log("This is called Asynchronous code")
         
-    }, [])
+    }, [props])
 
     const logoutHandler = () => {
         axios.get(`http://localhost:8000/api/logout`)
@@ -51,9 +55,9 @@ const Dashboard = () => {
             {/* Buttons below buddy cards */}
             <div className='buddy-card-container'>
                 {
-                    cards&&users&&users.map((user, idx) => 
-                        <TinderCard className='swipe' key={idx} preventSwipe={['up', 'down']} >
 
+                    cards&&users&&users.filter(user => user._id !== loggedInUser._id).map((user, idx) => 
+                        <TinderCard className='swipe' key={idx} preventSwipe={['up', 'down']} >
                             <div style={ {backgroundImage: `url(${user.url})`} } className='cards'>
                                 <h3>{user.firstName}</h3>
                             </div>

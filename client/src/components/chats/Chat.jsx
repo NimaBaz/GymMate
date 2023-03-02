@@ -20,7 +20,7 @@ const Chat = () => {
     }, [])
 
     return (
-        <Link to={`/chat`}>
+        <Link to={`/chat/${user._id}`}>
             <div className="chat">
 
                 <Avatar className='chat-image' />

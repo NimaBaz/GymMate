@@ -12,7 +12,7 @@ const Chats = () => {
             {/* Header */}
             <TopNav backButton='/dashboard'/>
 
-            <div class="search">
+            <div className="search">
                 <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                 <button className='logout-button' type="submit">Search</button>
             </div>

@@ -2,7 +2,7 @@ import axios from "axios"
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 
-const Login = () => {
+const Login = (props) => {
     const navigate = useNavigate()
 
     const [user, setUser] = useState({
@@ -22,9 +22,10 @@ const Login = () => {
 
     const submitHandler = (e) =>{
         e.preventDefault()
-        axios.post(`http://localhost:8000/api/login`, user)
-            .then(res => {
-                console.log(res)
+        axios.post(`http://localhost:8000/api/login`, user, {withCredentials:true})
+            .then(response => {
+                console.log(response)
+                props.setLoggedInUser(response.data.user);
                 navigate("/dashboard")
             })
             .catch(err => {
@@ -46,7 +47,7 @@ const Login = () => {
             <section className="text-center text-lg-start">
             <div className="card mb-3">
                 <div className="row g-0 d-flex align-items-center">
-                    <div classname="form">
+                    <div className="form">
                         <div className="card-body py-5 px-md-5">
                             <form onSubmit={submitHandler}>
                                 <div className="form-outline mb-4">

@@ -37,7 +37,7 @@ module.exports.login = async(req, res) => {
 module.exports.getAllUsers = (req, res) => {
     User.find()
     .then((users) => {
-        res.cookie("test","test", {httpOnly:true}).json({results: users})
+        res.cookie("test","test", {httpOnly:true}).json(users)
     })
     .catch((err) => {
         res.status(400).json(err)
@@ -53,9 +53,9 @@ module.exports.logout = (req, res) => {
 }
 
 module.exports.getUser = (req, res) => {
-    User.findOne({ _id: req.params.id })
+    User.findOne()
     .then(oneUser => {
-        res.json({results: oneUser})
+        res.cookie("test","test", {httpOnly:true}).json(oneUser)
     })
     .catch((err) => {
         res.status(500).json(err)
@@ -76,7 +76,7 @@ module.exports.updateUser = (req, res) => {
         { new: true, runValidators: true }
     )
         .then(updateUser => {
-            res.json({ results: updateUser })
+            res.json(updateUser )
         })
         .catch((err) => {
             res.status(400).json(err)
@@ -89,7 +89,7 @@ module.exports.updateUser = (req, res) => {
 module.exports.deleteUser = (req, res) => {
     User.deleteOne({ _id: req.params.id })
         .then(deleteUser => {
-            res.json({ result: deleteUser })
+            res.json(deleteUser)
         })
         .catch((err) => {
             res.status(400).json(err)
