@@ -1,16 +1,18 @@
 import axios from "axios"
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import useLocalStorage from '../../hooks/useLocalStorage'
 
-const Login = (props) => {
+const Login = () => {
     const navigate = useNavigate()
 
     const [user, setUser] = useState({
         email:"",
         password:"",
     })
-
+    
     const [errors, setErrors] = useState([]);
+    const [loggedInUserID, setLoggedInUserID] = useLocalStorage("userID", null);
 
     const changeHandler =(e) =>{
         let {name, value} = e.target
@@ -24,11 +26,12 @@ const Login = (props) => {
         e.preventDefault()
         axios.post(`http://localhost:8000/api/login`, user, {withCredentials:true})
             .then(response => {
-                console.log(response)
-                props.setLoggedInUser(response.data.user);
+                console.log("Login POST request", response.data)
+                setLoggedInUserID(response.data.user._id)
                 navigate("/dashboard")
             })
             .catch(err => {
+                console.log("Login error", err.response.data);
                 const errorResponse = err.response.data.errors; // Get the errors from err.response.data
                 const errorArr = []; // Define a temp error array to push the messages in
                 for (const key in errorResponse) { // Loop through all errors and get the messages
@@ -69,8 +72,8 @@ const Login = (props) => {
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+            </section>
+        </div>
     )
 }
 

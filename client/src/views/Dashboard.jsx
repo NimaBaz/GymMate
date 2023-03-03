@@ -4,12 +4,12 @@ import TinderCard from "react-tinder-card"
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import SwipeButtons from '../components/buttons/SwipeButtons';
+import useLocalStorage from '../hooks/useLocalStorage'
 
 const Dashboard = (props) => {
 
-    console.log("Dashboard Props", props);
+    const [loggedInUserID] = useLocalStorage("userID", null);
     
-    const {loggedInUser} = props
     const navigate = useNavigate();
     const [users, setUsers] = useState(null);
     const [cards, setCards] = useState([
@@ -24,7 +24,6 @@ const Dashboard = (props) => {
                 console.log("This is our GET request: ", response)
                 setCards(response.data)
                 setUsers(response.data)
-                props.setLoggedInUser(response.data.user);
             })
             .catch((err) => {
                 console.log("This is our catch error: ", err)
@@ -35,7 +34,7 @@ const Dashboard = (props) => {
 
     const logoutHandler = () => {
         axios.get(`http://localhost:8000/api/logout`)
-            .then(res => navigate("/"))
+            .then(response => navigate("/"))
             .catch()
     }
 
@@ -56,7 +55,7 @@ const Dashboard = (props) => {
             <div className='buddy-card-container'>
                 {
 
-                    cards&&users&&users.filter(user => user._id !== loggedInUser._id).map((user, idx) => 
+                    cards&&users&&users.filter(user => user._id !== loggedInUserID).map((user, idx) => 
                         <TinderCard className='swipe' key={idx} preventSwipe={['up', 'down']} >
                             <div style={ {backgroundImage: `url(${user.url})`} } className='cards'>
                                 <h3>{user.firstName}</h3>

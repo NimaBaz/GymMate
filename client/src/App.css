@@ -46,15 +46,83 @@ a {
 /* Login/Reg */
 
 .log-reg {
-  width: 100%;
+  width: 90%;
   height: 100%;
+  gap: 20px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
+.errors {
+  text-align: center;
+}
 
+.login {
+  width: 800px;
+  margin: 0 auto;
+  margin-top: 10%;
+  cursor: pointer;
+}
+
+.registration {
+  width: 700px;
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-left: 10%;
+  cursor: pointer;
+}
+
+.rounded-t-5 {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.card cascading-right {
+  background: hsla(0, 0%, 100%, 0.55);
+  backdrop-filter: blur(30px);
+}
+
+.cascading-right {
+  margin-right: -50px;
+}
+
+@media(min-width:992px) {
+  .rounded-tr-lg-0 {
+    border-top-right-radius: 0;
+  }
+  .rounded-bl-lg-5 {
+    border-bottom-left-radius: 0.5rem;
+  }
+}
+
+@media(max-width: 991.98px) {
+  .cascading-right {
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 /* Login/Reg */
 
@@ -180,7 +248,7 @@ a {
 .chat {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between !important;
   padding: 20px;
   height: 70px;
 }
@@ -258,7 +326,7 @@ a {
 
 .chatScreen-inputButton {
   border: none;
-  margin-right: 20px;
+  margin-left: 10px;
   background-color: white;
   font-weight: bolder;
   color: #fe3d71;
@@ -268,15 +336,18 @@ a {
   flex: 1;
   padding: 10px;
   border: none;
+  width: 40vw;
 }
 
 .chatScreen-input {
   display: flex;
+  align-items: center;
+  justify-content: right;
   padding: 5px;
   position: fixed;
   bottom: 0;
-  width: 100%;
-  border-top: 1px solid grey;
+  width: 96%;
+  margin-bottom: 30px;
 }
 
 /* Chats */

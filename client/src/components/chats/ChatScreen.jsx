@@ -5,6 +5,8 @@ import React, { useState, useEffect } from 'react';
 
 const ChatScreen = () => {
 
+    const [approve, setApprove] = useState(false)
+    const [username, setUserName] = useState("")
     const [input, setInput] = useState("")
     const [messages, setMessages] = useState([])
 
@@ -13,8 +15,16 @@ const ChatScreen = () => {
     useEffect(() => {
         console.log("Is this running?");
         socket.on("post chat", (msg) => {setMessages(prevMsgState => [...prevMsgState, msg])});
+        console.log("This is our message", messages)
         return () => socket.removeAllListeners();
     }, [socket]);
+
+    const usernameHandler = (e) => {
+        e.preventDefault()
+        if(username){
+            setApprove(true)
+        }
+    }
 
     const Submit = (e) => {
         e.preventDefault();

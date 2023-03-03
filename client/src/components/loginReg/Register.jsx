@@ -45,30 +45,42 @@ const Register = () => {
 
     return (
         <div className='registration'>
-            {errors.map((err, index) => <p key={index} className="tabs">{err}</p>)}
-            <form onSubmit={submitHandler}>
-                <div className="form-group row">
-                    <label>First Name</label>
-                    <input type="text" name="firstName" value={user.firstName} onChange={changeHandler} />
+            <section className="text-center text-lg-start">
+            <div className="card mb-3">
+                <div className="errors">
+                    {errors.map((err, index) => <p key={index} className="tabs">{err}</p>)}
                 </div>
-                <div className="form-group row">
-                    <label>Last Name</label>
-                    <input type="text" name="lastName" value={user.lastName} onChange={changeHandler} />
+                <div className="row g-0 d-flex align-items-center">
+                    <div className="form">
+                        <div className="card-body py-5 px-md-5">
+                            <form onSubmit={submitHandler}>
+                                <div className="form-outline mb-4">
+                                    <label className="form-label">First Name</label>
+                                    <input className="form-control" type="text" name="firstName" value={user.firstName} onChange={changeHandler} />
+                                </div>
+                                <div className="form-outline mb-4">
+                                    <label className="form-label">Last Name</label>
+                                    <input className="form-control" type="text" name="lastName" value={user.lastName} onChange={changeHandler} />
+                                </div>
+                                <div className="form-outline mb-4">
+                                    <label className="form-label">Email</label>
+                                    <input className="form-control" type="text" name="email" value={user.email} onChange={changeHandler} />
+                                </div>
+                                <div className="form-outline mb-4">
+                                    <label className="form-label">Password</label>
+                                    <input className="form-control" type="password" name="password" value={user.password} onChange={changeHandler} />
+                                </div>
+                                <div className="form-outline mb-4">
+                                    <label className="form-label">Confirm Password</label>
+                                    <input className="form-control" type="password" name="confirmPassword" value={user.confirmPassword} onChange={changeHandler} />
+                                </div>
+                                <button className='logout-button'> Sign Up </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div className="form-group row">
-                    <label>Email</label>
-                    <input type="text" name="email" value={user.email} onChange={changeHandler} />
-                </div>
-                <div className="form-group row">
-                    <label>Password</label>
-                    <input type="password" name="password" value={user.password} onChange={changeHandler} />
-                </div>
-                <div className="form-group row">
-                    <label>Confirm Password</label>
-                    <input type="password" name="confirmPassword" value={user.confirmPassword} onChange={changeHandler} />
-                </div>
-                <button className='logout-button'> Sign Up </button>
-            </form>
+            </div>
+            </section>
         </div>
     )
 }

@@ -5,13 +5,14 @@ import Register from '../components/loginReg/Register'
 const LoginReg = (props) => {
 
     return (
-        <div className="log-reg">
-
+        <div>
             <h1 className='main-logo'>GymMate</h1>
+            <div className="log-reg">
 
-            <Register/>
-            <Login setLoggedInUser={props.setLoggedInUser} />
+                <Register/>
+                <Login setLoggedInUser={props.setLoggedInUser} />
 
+            </div>
         </div>
     );
 };

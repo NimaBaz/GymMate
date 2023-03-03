@@ -19,13 +19,14 @@ module.exports.register = (req, res)=>{
 }
 
 module.exports.login = async(req, res) => {
+    console.log("Login req.body", req.body)
     const user = await User.findOne({ email: req.body.email });
     if(user === null) {
-        return res.sendStatus(400);
+        return res.status(400).json({message: 'Invalid Credentials', code: "E"});
     }
     const correctPassword = await bcrypt.compare(req.body.password, user.password);
     if(!correctPassword) {
-        return res.sendStatus(400);
+        return res.status(400).json({message: 'Invalid Credentials', code: "P"});
     }
     const userToken = jwt.sign({id: user._id}, process.env.FIRST_SECRET_KEY);
     res.cookie("usertoken", userToken,  process.env.FIRST_SECRET_KEY, {httpOnly: true}).json({ msg: "success!", user });
