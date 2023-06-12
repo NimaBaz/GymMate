@@ -1,10 +1,11 @@
 import axios from 'axios';
-import TopNav from '../components/nav/TopNav';
+import { v4 as uuid } from "uuid";
 import TinderCard from "react-tinder-card"
+import TopNav from '../components/nav/TopNav';
 import { useNavigate } from 'react-router-dom';
-import React, { useEffect, useState } from "react";
-import SwipeButtons from '../components/buttons/SwipeButtons';
 import useLocalStorage from '../hooks/useLocalStorage'
+import React, { useEffect, useState, Component } from "react";
+import SwipeButtons from '../components/buttons/SwipeButtons';
 
 const Dashboard = (props) => {
 
